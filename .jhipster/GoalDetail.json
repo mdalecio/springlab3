@@ -1,0 +1,57 @@
+{
+    "name": "GoalDetail",
+    "fields": [
+        {
+            "fieldName": "point",
+            "fieldType": "Integer",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "channel",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "createdAt",
+            "fieldType": "Instant",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "updatedAt",
+            "fieldType": "Instant"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "one-to-many",
+            "otherEntityName": "goal",
+            "otherEntityRelationshipName": "goalDetail",
+            "relationshipName": "goal"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "goal",
+            "otherEntityRelationshipName": "detail",
+            "relationshipName": "goal",
+            "otherEntityField": "id"
+        }
+    ],
+    "changelogDate": "20200206190043",
+    "entityTableName": "goal_detail",
+    "dto": "mapstruct",
+    "pagination": "no",
+    "service": "serviceClass",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "readOnly": false,
+    "clientRootFolder": "",
+    "applications": [
+        "myMonolith"
+    ]
+}
