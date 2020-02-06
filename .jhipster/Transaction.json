@@ -1,0 +1,65 @@
+{
+    "name": "Transaction",
+    "fields": [
+        {
+            "fieldName": "userId",
+            "fieldType": "Long",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "eventMessage",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "goalExecutedDate",
+            "fieldType": "Instant"
+        },
+        {
+            "fieldName": "canceletedDate",
+            "fieldType": "Instant"
+        },
+        {
+            "fieldName": "createdAt",
+            "fieldType": "Instant",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "updatedAt",
+            "fieldType": "Instant"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "one-to-many",
+            "otherEntityName": "goal",
+            "otherEntityRelationshipName": "transaction",
+            "relationshipName": "transaction"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "goal",
+            "otherEntityRelationshipName": "goal",
+            "relationshipName": "goal",
+            "otherEntityField": "id"
+        }
+    ],
+    "changelogDate": "20200206185643",
+    "entityTableName": "transaction",
+    "dto": "mapstruct",
+    "pagination": "no",
+    "service": "serviceClass",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "readOnly": false,
+    "clientRootFolder": "",
+    "applications": [
+        "myMonolith"
+    ]
+}

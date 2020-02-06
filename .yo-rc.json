@@ -1,0 +1,49 @@
+{
+  "generator-jhipster": {
+    "databaseType": "sql",
+    "devDatabaseType": "h2Disk",
+    "enableHibernateCache": true,
+    "enableSwaggerCodegen": false,
+    "enableTranslation": true,
+    "jhiPrefix": "jhi",
+    "languages": [
+      "en",
+      "fr"
+    ],
+    "messageBroker": false,
+    "nativeLanguage": "en",
+    "packageName": "com.mycompany.myapp",
+    "packageFolder": "com/mycompany/myapp",
+    "prodDatabaseType": "mysql",
+    "searchEngine": false,
+    "serviceDiscoveryType": false,
+    "skipClient": false,
+    "skipServer": false,
+    "testFrameworks": [],
+    "websocket": false,
+    "baseName": "myMonolith",
+    "applicationType": "monolith",
+    "jhipsterVersion": "6.7.0",
+    "creationTimestamp": 1581015180404,
+    "buildTool": "maven",
+    "skipUserManagement": false,
+    "clientPackageManager": "npm",
+    "authenticationType": "jwt",
+    "cacheProvider": "ehcache",
+    "clientFramework": "angularX",
+    "clientTheme": "none",
+    "clientThemeVariant": "",
+    "serverPort": "8080",
+    "useSass": true
+  },
+  "entities": [
+    "Event",
+    "DefinitionObject",
+    "Transaction",
+    "GoalUserPointSummary",
+    "Level",
+    "Goal",
+    "GoalDetail",
+    "GoalUserPointFull"
+  ]
+}

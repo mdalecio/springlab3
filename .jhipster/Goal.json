@@ -1,0 +1,142 @@
+{
+    "name": "Goal",
+    "fields": [
+        {
+            "fieldName": "title",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "slug",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "filterField",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "filterOperation",
+            "fieldType": "GoalFilterEnum",
+            "fieldValues": "EQUALS,LESSTHAN,LESSTHANEQUAL,GREATERTHAN,GREATERTHANEQUAL,IN,NOT_IN",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "startDate",
+            "fieldType": "Instant",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "endDate",
+            "fieldType": "Instant"
+        },
+        {
+            "fieldName": "recurrency",
+            "fieldType": "GoalRecurrencyEnum",
+            "fieldValues": "ONCE,DAILY,WEEKLY,MONTHLY,YEARLY",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "qtyCompleteGoal",
+            "fieldType": "Integer",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "qtyParticipateGoal",
+            "fieldType": "Integer",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "pointType",
+            "fieldType": "GoalPointTypeEnum",
+            "fieldValues": "FIXED,MULTIPLY",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "parameterMultiply",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "isActive",
+            "fieldType": "Boolean"
+        },
+        {
+            "fieldName": "createdAt",
+            "fieldType": "Instant",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "updatedAt",
+            "fieldType": "Instant"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "one-to-one",
+            "otherEntityName": "event",
+            "otherEntityRelationshipName": "goal",
+            "relationshipName": "eventAction",
+            "otherEntityField": "id",
+            "ownerSide": true
+        },
+        {
+            "relationshipType": "one-to-many",
+            "otherEntityName": "goalDetail",
+            "otherEntityRelationshipName": "goal",
+            "relationshipName": "detail"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "otherEntityName": "transaction",
+            "otherEntityRelationshipName": "goal",
+            "relationshipName": "goal"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "goalDetail",
+            "otherEntityRelationshipName": "goal",
+            "relationshipName": "goalDetail",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "transaction",
+            "otherEntityRelationshipName": "transaction",
+            "relationshipName": "transaction",
+            "otherEntityField": "id"
+        }
+    ],
+    "changelogDate": "20200206185943",
+    "entityTableName": "goal",
+    "dto": "mapstruct",
+    "pagination": "no",
+    "service": "serviceClass",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "readOnly": false,
+    "clientRootFolder": "",
+    "applications": [
+        "myMonolith"
+    ]
+}
