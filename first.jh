@@ -3,7 +3,10 @@ application {
     baseName myMonolith
     applicationType monolith
   }
+  entities *
 }
+dto * with mapstruct
+service * with serviceClass
 
 entity Event {
     name String required
@@ -16,7 +19,6 @@ entity Event {
 entity DefinitionObject {
     name String required
     parserName String required
-    type EventTypeEnum required
     isActive Boolean
     createdAt Instant required
     updatedAt Instant
