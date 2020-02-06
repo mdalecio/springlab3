@@ -1,0 +1,118 @@
+application {
+  config {
+    baseName myMonolith
+    applicationType monolith
+  }
+}
+
+entity Event {
+    name String required
+    eventValue String required
+    isActive Boolean
+    createdAt Instant required
+    updatedAt Instant
+}
+
+entity DefinitionObject {
+    name String required
+    parserName String required
+    type EventTypeEnum required
+    isActive Boolean
+    createdAt Instant required
+    updatedAt Instant
+}
+
+
+entity Transaction {
+    userId Long required 
+    eventMessage String required //json message
+    goalExecutedDate Instant
+    canceletedDate Instant
+    createdAt Instant required
+    updatedAt Instant
+}
+
+entity GoalUserPointSummary {
+    userId Long required   
+    startDate Instant required
+    endDate Instant required
+    point Integer required
+    createdAt Instant required
+    updatedAt Instant    
+}
+
+entity Level {
+    name String required    
+    point Integer required
+    createdAt Instant required
+    updatedAt Instant    
+}
+
+entity Goal {
+    title String required
+    slug String required    
+    filterField String required
+    filterOperation GoalFilterEnum required    
+    startDate Instant required
+    endDate Instant
+    recurrency GoalRecurrencyEnum required
+    qtyCompleteGoal Integer required
+    qtyParticipateGoal Integer required
+    pointType GoalPointTypeEnum required
+    parameterMultiply String
+    isActive Boolean
+    createdAt Instant required
+    updatedAt Instant    
+}
+
+entity GoalDetail {
+    point Integer required
+    channel String required
+    createdAt Instant required
+    updatedAt Instant    
+}
+
+entity GoalUserPointFull {
+    userId Long required    
+    action GoalActionEnum required
+    startDate Instant required
+    endDate Instant required
+    point Integer required
+    userOriginPointId Long required
+    createdAt Instant required
+    updatedAt Instant  
+}
+
+relationship OneToOne {
+    Level{level} to GoalDetail    
+    GoalUserPointFull{goal} to Goal
+    GoalUserPointSummary{goal} to Goal
+    DefinitionObject{goal} to Goal    
+    Goal{eventAction} to Event
+}
+
+relationship OneToMany {
+    Goal{detail} to GoalDetail,
+    GoalDetail{goal} to Goal,
+    Transaction{transaction} to Goal,
+    Goal{goal} to Transaction
+}
+
+enum GoalPointTypeEnum {
+    FIXED, MULTIPLY
+}
+
+enum GoalActionEnum {
+    ADD_POINT_AUTO, ADD_POINT_MANUAL, REMOVE_POINT_AUTO, 
+    REMOVE_POINT_MANUAL
+}
+
+enum GoalRecurrencyEnum {
+    ONCE, DAILY, WEEKLY, MONTHLY, YEARLY
+}
+
+
+enum GoalFilterEnum {
+    EQUALS, LESSTHAN, LESSTHANEQUAL, GREATERTHAN, 
+    GREATERTHANEQUAL, IN, NOT_IN
+}
